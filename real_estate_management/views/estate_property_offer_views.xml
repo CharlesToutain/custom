@@ -10,6 +10,7 @@
                 multi_edit="1" sample="1"
                 >
                 <field name="estate_property_id"/>
+                <field name="agent_id"/>
                 <field name="buyer_id"/>
                 <field name="seller_id"/>
                 <field name="date_of_offer"/>
@@ -30,6 +31,7 @@
                 <sheet>
                     <group>
                         <field name="estate_property_id"/>
+                        <field name="agent_id"/>
                         <field name="buyer_id"/>
                         <field name="seller_id"/>
                         <field name="date_of_offer"/>

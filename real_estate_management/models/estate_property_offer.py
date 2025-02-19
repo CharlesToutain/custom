@@ -14,6 +14,7 @@ class EstatePropertyOffer(models.Model):
         string='Property',
         required=True,
     )
+    agent_id = fields.Many2one(related='estate_property_id.user_id', string='Agent Commercial')
     buyer_id = fields.Many2one(
         'res.partner',
         string='Buyer',
@@ -87,3 +88,4 @@ class EstatePropertyOffer(models.Model):
             })
         return category
     
+
