@@ -10,7 +10,7 @@
     'author': 'Your Name',
     'website': 'http://www.yourwebsite.com',
     'category': 'Real Estate',
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
     'data': [
         # DATA
         'data/res_group.xml',

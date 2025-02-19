@@ -3,6 +3,7 @@ from odoo import models, fields, api
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
+    _inherit = ['mail.thread.main.attachment', 'mail.activity.mixin']
     _description = 'Estate Property'
     _sql_constraints = [
         ('check_surface', 'CHECK(surface > 0)', 'The surface of a property must be positive.'),
