@@ -4,7 +4,7 @@ class MassEditOffer(models.TransientModel):
     _name = 'mass.edit.offer'
     _description = 'Mass Edit Offer'
 
-    property_ids = fields.Many2many('estate.property', string='Properties')
+    property_ids = fields.Many2many('estate.property', string='Propriété')
     new_price = fields.Float(string='New Price')
     buyer_id = fields.Many2one('res.partner', string='Buyer')
 
