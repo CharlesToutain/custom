@@ -20,6 +20,8 @@
         'security/ir.model.access.csv',
         # WIZARD
         'wizard/mass_edit_wizard.xml',
+        #REPORT
+        'report/report_estate_property.xml',
         # views
         'views/estate_property_views.xml',
         'views/estate_property_category_views.xml',
