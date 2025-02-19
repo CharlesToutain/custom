@@ -52,6 +52,7 @@
                                 <field name="date_of_build"/>
                                 <field name="type"/>
                                 <field name="estimation_price"/>
+                                <field name="price_per_m2"/>
                                 <field name="user_id"/>
                             </group>
                         </page>

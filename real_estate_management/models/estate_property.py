@@ -1,5 +1,6 @@
 from datetime import timedelta
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -8,7 +9,7 @@ class EstateProperty(models.Model):
         ('check_surface', 'CHECK(surface > 0)', 'The surface of a property must be positive.'),
         ('name_unique', 'UNIQUE(name)', 'The title of the property must be unique.')
     ]
-    
+
 
     name = fields.Char(string='Title', required=True)
     description = fields.Html(
@@ -53,6 +54,17 @@ class EstateProperty(models.Model):
     estimation_price = fields.Float('Estimation Price')
     user_id = fields.Many2one('res.users', string='Responsible')
 
+    #price_per_m2 = estimation_price / surface
+
+    price_per_m2 = fields.Float('Price per m2',
+                                compute="_compute_price_per_m2")
+    
+
+    def _compute_price_per_m2(self):
+        for rec in self:
+            rec.price_per_m2 = rec.estimation_price / rec.surface
+
+
     @api.depends('date_of_last_dpe')
     def _compute_is_valid_dpe(self):
         for rec in self:
@@ -74,6 +86,15 @@ class EstateProperty(models.Model):
             'view_mode': 'form',
             'target': 'current',
         }
+    
+    @api.constrains('estimation_price')
+    def _check_estimation_price(self):
+        for rec in self:
+            if self.estimation_price < 0:
+                raise UserError('Le prix doit être positif')
+            else:
+                True
+
     # def open_wizard(self):
     #     return {
     #         'type': 'ir.actions.act_window',
