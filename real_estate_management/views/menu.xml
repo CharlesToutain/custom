@@ -1,0 +1,29 @@
+<odoo>
+    <menuitem 
+        id="menu_real_estate_management"
+        name="Real Estate Management">
+        
+        <menuitem 
+            id="menu_real_estate_management_action"
+            name="Real Estate Actions"
+            action="action_estate_property"
+            />
+
+        <menuitem 
+                id="menu_real_estate_management_category"
+                name="Real Estate Categories"
+                action="action_estate_property_category"
+            />
+        <menuitem 
+                id="menu_real_estate_management_tag"
+                name="Real Tag"
+                action="action_estate_property_tag"
+            />
+        <menuitem 
+            id="menu_real_estate_management_offer"
+            name="Offers"
+            action="action_estate_property_offer"
+            />
+    </menuitem>
+
+</odoo>

@@ -1,0 +1,78 @@
+<odoo>
+    <record id="view_estate_property_list" model="ir.ui.view">
+        <field name="name">estate.property.list</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <list
+                expand="0"
+                string="Estate Properties"
+                create="true"
+                edit="true"
+                multi_edit="1" sample="1"
+                >
+                <field name="name"/>
+                <field name="description"/>
+                <field name="property_category_id"/>
+                <!-- <field name="is_valid_dpe"/> -->
+            </list>
+        </field>
+    </record>
+
+    <record id="view_estate_property_form" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Estate Property">
+                <header>
+                    <button string="Open Assistant" name="open_contact" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <field name="picture" widget="image" class="oe_avatar" />
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="partner_street"/>
+                        <field name="partner_email"/>
+                        <field name="description"/>
+                        <field name="property_category_id"/>
+                        <field name="tag_ids"
+                            widget="many2many_tags"
+                            options="{'no_quick_create': True}"
+                            />
+                    </group>
+                    <notebook>
+                        <page name="infos" string="Informations">
+                            <group name="name" string="Adresse">
+                                <field name="zip"/>
+                                <field name="street"/>
+                                <field name="country_id"/>
+                            </group>
+                            <group name="info" string="Information Supplémentaire">
+                                <field name="surface"/>
+                                <field name="date_of_build"/>
+                                <field name="type"/>
+                                <field name="estimation_price"/>
+                                <field name="user_id"/>
+                            </group>
+                        </page>
+                        <page string="DPE" name="dpe">
+                            <group>
+                                <field name="date_of_last_dpe"/>
+                                <field name="is_valid_dpe"/>
+                            </group>
+
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_estate_property" model="ir.actions.act_window">
+        <field name="name">Estate Properties</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">kanban,list,form,pivot</field>
+        <field name="context">{'group_by': 'country_id'}</field>
+    </record>
+
+</odoo>

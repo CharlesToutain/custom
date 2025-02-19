@@ -1,0 +1,8 @@
+<odoo>
+    <record id="estate_property_category_win" model="estate.property.category">
+        <field name="name">Master DATA : Gagné</field>
+    </record>
+    <record id="estate_property_category_lose" model="estate.property.category">
+        <field name="name">Master DATA : Perdu</field>
+    </record>
+</odoo>

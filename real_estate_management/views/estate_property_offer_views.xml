@@ -1,0 +1,49 @@
+<odoo>
+    <record id="view_estate_property_offer_list" model="ir.ui.view">
+        <field name="name">estate.property.offer.list</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <list 
+                string="Estate Property Offer"
+                create="true"
+                edit="true"
+                multi_edit="1" sample="1"
+                >
+                <field name="estate_property_id"/>
+                <field name="buyer_id"/>
+                <field name="seller_id"/>
+                <field name="date_of_offer"/>
+                <field name="price"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_estate_property_offer_form" model="ir.ui.view">
+        <field name="name">estate.property.offer.form</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <form string="Estate Property Offer">
+                <header>
+                    <button string="Done" name="accept_offer" type="object" class="oe_highlight"/>
+                    <button string="Perdu" name="decline_offer" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="estate_property_id"/>
+                        <field name="buyer_id"/>
+                        <field name="seller_id"/>
+                        <field name="date_of_offer"/>
+                        <field name="price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_estate_property_offer" model="ir.actions.act_window">
+        <field name="name">Estate Property Category</field>
+        <field name="res_model">estate.property.offer</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,25 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Rule to restrict User Estate group to see only their own buildings -->
+        <record id="estate_user_rule" model="ir.rule">
+            <field name="name">User Estate: See Own Buildings</field>
+            <field name="model_id" ref="model_estate_property"/>
+            <field name="groups" eval="[(4, ref('group_user_estate'))]"/>
+            <field name="domain_force">['|', ('user_id', '=', user.id), ('user_id', '=', False)]</field>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="estate_manager_rule" model="ir.rule">
+            <field name="name">Manager Estate: See All</field>
+            <field name="model_id" ref="model_estate_property"/>
+            <field name="groups" eval="[(4, ref('group_manager_estate'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+    </data>
+</odoo>
