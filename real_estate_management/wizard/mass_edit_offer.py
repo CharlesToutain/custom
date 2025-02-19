@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 
 class MassEditOffer(models.TransientModel):
     _name = 'mass.edit.offer'
@@ -24,3 +25,9 @@ class MassEditOffer(models.TransientModel):
                 'price': self.new_price,
                 'date_of_offer': fields.Date.today(),
             })
+
+    @api.constrains('new_price', 'buyer_id')
+    def _check_price(self):
+         for record in self:
+            if not record.new_price or not record.buyer_id:
+                raise UserError("Erreur: Price ou Buyer ID n'est pas défini.")
